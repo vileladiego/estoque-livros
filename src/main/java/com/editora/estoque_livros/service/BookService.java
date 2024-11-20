@@ -3,6 +3,7 @@ package com.editora.estoque_livros.service;
 import com.editora.estoque_livros.dto.BookDTO;
 import com.editora.estoque_livros.entity.Book;
 import com.editora.estoque_livros.mapper.BookMapper;
+import com.editora.estoque_livros.repository.AuthorRepository;
 import com.editora.estoque_livros.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,12 @@ import java.util.List;
 public class BookService {
 
     private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
     private final BookMapper bookMapper;
 
     public BookDTO save(Book book) {
+        book.setAuthor(authorRepository.findById(book.getAuthor().getId())
+                .orElseThrow(() -> new EntityNotFoundException("Author not found")));
         return bookMapper.toDTO(bookRepository.save(book));
     }
 

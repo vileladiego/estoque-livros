@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface BookMapper {
 
+    @Mapping(target = "author", ignore = true)
     Book toEntity(BookDTO bookDTO);
     @Mapping(source = "author.id", target = "authorId")
     @Mapping(source = "author.name", target = "authorName")

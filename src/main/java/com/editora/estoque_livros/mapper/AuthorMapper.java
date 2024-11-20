@@ -7,10 +7,16 @@ import com.editora.estoque_livros.entity.Book;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface AuthorMapper {
 
+
     Author toEntity(AuthorDTO authorDTO);
 
+
     AuthorDTO toDTO(Author author);
+
+    List<AuthorDTO> toDTOList(List<Author> authors);
 }
