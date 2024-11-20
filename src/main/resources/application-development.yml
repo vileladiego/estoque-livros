@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/estoque_livros
+    url: jdbc:postgresql://localhost:5432/estoque-livros
     username: postgres
     password: senha
   jpa:
