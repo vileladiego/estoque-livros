@@ -2,6 +2,7 @@ package com.editora.estoque_livros.service;
 
 import com.editora.estoque_livros.dto.BookDTO;
 import com.editora.estoque_livros.entity.Book;
+import com.editora.estoque_livros.exception.ResourceNotFoundException;
 import com.editora.estoque_livros.mapper.BookMapper;
 import com.editora.estoque_livros.repository.AuthorRepository;
 import com.editora.estoque_livros.repository.BookRepository;
@@ -38,4 +39,18 @@ public class BookService {
     public void delete(Long id) {
         bookRepository.deleteById(id);
     }
+
+    public BookDTO updateStock(Long id, int stockChange) {
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Livro não encontrado"));
+
+        book.setStock(book.getStock() + stockChange);
+
+        if (book.getStock() < 0) {
+            throw new IllegalArgumentException("O estoque não pode ser negativo");
+        }
+
+        return bookMapper.toDTO(bookRepository.save(book));
+    }
+
 }

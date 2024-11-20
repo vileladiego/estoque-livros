@@ -36,4 +36,13 @@ public class BookController implements BookApi {
         bookService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PatchMapping("/{id}/stock")
+    public ResponseEntity<BookDTO> updateStock(
+            @PathVariable Long id,
+            @RequestParam int stockChange
+    ) {
+        BookDTO updatedBook = bookService.updateStock(id, stockChange);
+        return ResponseEntity.ok(updatedBook);
+    }
 }
