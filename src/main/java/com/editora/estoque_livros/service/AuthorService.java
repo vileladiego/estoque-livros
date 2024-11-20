@@ -1,7 +1,6 @@
 package com.editora.estoque_livros.service;
 
 import com.editora.estoque_livros.dto.AuthorDTO;
-import com.editora.estoque_livros.entity.Author;
 import com.editora.estoque_livros.mapper.AuthorMapper;
 import com.editora.estoque_livros.repository.AuthorRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,8 +16,8 @@ public class AuthorService {
     private final AuthorRepository authorRepository;
     private final AuthorMapper authorMapper;
 
-    public AuthorDTO save(Author author) {
-        return authorMapper.toDTO(authorRepository.save(author));
+    public AuthorDTO save(AuthorDTO author) {
+        return authorMapper.toDTO(authorRepository.save(authorMapper.toEntity(author)));
     }
 
     public List<AuthorDTO> findAll() {

@@ -1,5 +1,6 @@
 package com.editora.estoque_livros.controller;
 
+import com.editora.estoque_livros.api.BookApi;
 import com.editora.estoque_livros.dto.BookDTO;
 import com.editora.estoque_livros.entity.Book;
 import com.editora.estoque_livros.service.BookService;
@@ -10,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/book")
-public class BookController {
+
+public class BookController implements BookApi {
     @Autowired
     private BookService bookService;
 
     @PostMapping
-    public ResponseEntity<BookDTO> save(@RequestBody Book book) {
+    public ResponseEntity<BookDTO> save(@RequestBody BookDTO book) {
         return ResponseEntity.ok(bookService.save(book));
     }
 

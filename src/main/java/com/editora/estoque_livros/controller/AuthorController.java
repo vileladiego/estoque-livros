@@ -1,8 +1,7 @@
 package com.editora.estoque_livros.controller;
 
-
+import com.editora.estoque_livros.api.AuthorApi;
 import com.editora.estoque_livros.dto.AuthorDTO;
-import com.editora.estoque_livros.entity.Author;
 import com.editora.estoque_livros.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,13 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/author")
-public class AuthorController {
+public class AuthorController implements AuthorApi {
     @Autowired
     private AuthorService bookService;
 
     @PostMapping
-    public ResponseEntity<AuthorDTO> save(@RequestBody Author author) {
+    public ResponseEntity<AuthorDTO> save(@RequestBody AuthorDTO author) {
         return ResponseEntity.ok(bookService.save(author));
     }
 

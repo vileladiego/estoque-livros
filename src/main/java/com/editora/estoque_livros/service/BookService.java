@@ -7,7 +7,6 @@ import com.editora.estoque_livros.repository.AuthorRepository;
 import com.editora.estoque_livros.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
@@ -20,8 +19,9 @@ public class BookService {
     private final AuthorRepository authorRepository;
     private final BookMapper bookMapper;
 
-    public BookDTO save(Book book) {
-        book.setAuthor(authorRepository.findById(book.getAuthor().getId())
+    public BookDTO save(BookDTO bookDTO) {
+        Book book = bookMapper.toEntity(bookDTO);
+        book.setAuthor(authorRepository.findById(bookDTO.getAuthorId())
                 .orElseThrow(() -> new EntityNotFoundException("Author not found")));
         return bookMapper.toDTO(bookRepository.save(book));
     }
