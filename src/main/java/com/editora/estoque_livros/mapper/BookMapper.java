@@ -1,0 +1,15 @@
+package com.editora.estoque_livros.mapper;
+
+import com.editora.estoque_livros.dto.BookDTO;
+import com.editora.estoque_livros.entity.Book;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
+@Mapper(componentModel = "spring")
+public interface BookMapper {
+
+    Book toEntity(BookDTO bookDTO);
+    @Mapping(source = "author.id", target = "authorId")
+    @Mapping(source = "author.name", target = "authorName")
+    BookDTO toDTO(Book book);
+}
