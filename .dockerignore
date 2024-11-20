@@ -1,0 +1,13 @@
+# Excluir diretórios de build e arquivos temporários
+/build
+/out
+*.tmp
+*.log
+
+# Não excluir o gradlew e a pasta gradle
+!gradlew
+!gradlew.bat
+!gradle/**
+
+# Excluir controle de versão
+.git
