@@ -40,6 +40,11 @@ dependencies {
 
 	// Lombok + MapStruct
 	annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+
+
+	// Dependência para Mockito Core
+	testImplementation ("org.mockito:mockito-core")
+	testImplementation ("org.mockito:mockito-junit-jupiter")
 }
 
 tasks.withType<Test> {
