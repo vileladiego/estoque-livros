@@ -3,7 +3,7 @@
 
 ## Descrição
 
-MonitorCam é um sistema web desenvolvido em Java com Spring Boot para gerenciamento de estoque de Livros. O sistema permite:
+Estoque Livros é um sistema web desenvolvido em Java com Spring Boot para gerenciamento de estoque de Livros. O sistema permite:
 
 - Adicionar novos livros.
 - Excluir livros.
@@ -77,7 +77,7 @@ Se preferir executar a aplicação localmente sem Docker, siga os passos abaixo:
 
 
 2. **Configure o banco de dados:**
-    * Crie um banco de dados chamado monitorcam.
+    * Crie um banco de dados chamado estoque-livros.
     * Atualize o arquivo ```src/main/resources/application.yml``` com as credenciais do seu banco de dados local:
    ```yaml
    spring:
