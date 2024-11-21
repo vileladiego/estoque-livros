@@ -102,7 +102,7 @@ Para executar os testes unitários, utilize o comando:
 Os relatórios de testes estarão disponíveis no diretório ```build/reports/tests/test/index.html```.
 
 ## Tecnologias Utilizadas
-* Java 17
+* Java 21
 * Spring Boot
 * Spring Data JPA
 * Spring Security
