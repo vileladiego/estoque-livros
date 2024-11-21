@@ -1,3 +1,11 @@
 spring:
   application:
     name: estoque-livros
+  datasource:
+    url: jdbc:postgresql://localhost:5432/estoque-livros
+    username: postgres
+    password: senha
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

@@ -1,18 +1,28 @@
-version: '3.9'
-
+version: '3.8'
 services:
-  postgres:
-    image: postgres:15
-    container_name: postgres-db
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "5432:5432"
+      - "8080:8080"
     environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/estoque-livros
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=senha
+    depends_on:
+      - db
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: estoque-livros
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: senha
-      POSTGRES_DB: estoque-livros
+    ports:
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    restart: always
 
 volumes:
   postgres_data:
+    driver: local
