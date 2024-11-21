@@ -29,7 +29,11 @@ Siga os passos abaixo para executar a aplicação utilizando Docker:
 2. **Construa e inicie os containers:**
 
    ```bash
-   docker compose up --build ou sudo docker compose up --build
+   docker compose up --build
+   ```
+   ou
+   ```bash
+   sudo docker compose up --build
    ```
    Caso esteja tomando este erro (somente em Windows):
     ```bash
